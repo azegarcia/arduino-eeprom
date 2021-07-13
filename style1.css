@@ -1,0 +1,144 @@
+.navtop {
+  background-color: #8aff8a;
+  height: 60px;
+  width: 100%;
+  border: 0;
+}
+.navtop div {
+  display: flex;
+  margin: 0 auto;
+  width: 1000px;
+  height: 100%;
+}
+.navtop div h1,
+.navtop div a {
+  display: inline-flex;
+  align-items: center;
+}
+.navtop div h1 {
+  flex: 1;
+  font-size: 24px;
+  padding: 0;
+  margin: 0;
+  color: #000000;
+  font-weight: bold;
+}
+.navtop div a {
+  padding: 0 20px;
+  text-decoration: none;
+  color: #000000;
+  font-weight: bold;
+}
+.navtop div a i {
+  padding: 2px 8px 0 0;
+}
+.navtop div a:hover {
+  color: #000000;
+}
+body.loggedin {
+  background-color: #f3f4f7;
+}
+.content {
+  width: 1000px;
+  margin: 0 auto;
+}
+.content h2 {
+  margin: 0;
+  padding: 25px 0;
+  font-size: 22px;
+  border-bottom: 1px solid #e0e0e3;
+  color: #020408;
+}
+.content > p,
+.content > div {
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);
+  margin: 25px 0;
+  padding: 25px;
+  background-color: #fff;
+}
+.content > p table td,
+.content > div table td {
+  padding: 5px;
+}
+.content > p table td:first-child,
+.content > div table td:first-child {
+  font-weight: bold;
+  color: #4a536e;
+  padding-right: 15px;
+}
+.content > div p {
+  padding: 5px;
+  margin: 0 0 10px 0;
+}
+.myclass {
+  display: inline-block;
+  width: auto;
+  height: auto;
+}
+.sc-gauge {
+  width: 200px;
+  height: 200px;
+  margin: 200px auto;
+}
+.sc-background {
+  position: relative;
+  height: 100px;
+  margin-bottom: 10px;
+  background-color: #fff;
+  border-radius: 150px 150px 0 0;
+  overflow: hidden;
+  text-align: center;
+}
+.sc-mask {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  left: 20px;
+  height: 80px;
+  background-color: #555888;
+  border-radius: 150px 150px 0 0;
+}
+.sc-percentage {
+  position: absolute;
+  top: 100px;
+  left: -200%;
+  width: 400%;
+  height: 400%;
+  margin-left: 100px;
+  background-color: #060d0f;
+}
+.sc-percentage {
+  transform: rotate(158deg);
+  transform-origin: top center;
+}
+.sc-min {
+  float: left;
+}
+.sc-max {
+  float: right;
+}
+.sc-value {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  font-size: 48px;
+  font-weight: 700;
+}
+#dashboard {
+  font-family: Arial;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#heading {
+  font-family: Arial;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#header {
+  font-family: Arial;
+  border-collapse: collapse;
+  width: 100%;
+}
