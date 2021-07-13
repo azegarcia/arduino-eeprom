@@ -50,6 +50,8 @@
     <form action="filter.php" style="margin-top:10px; margin-bottom:10px;" method="get">
         <center><b><label for="serial">Serial Number:</b></label>
             <input type="text" id="serial" name="serial" placeholder="Eg. CB1701" required>
+            <b><label for="week">Work Week:</b></label>
+            <input type="text" id="week" name="week" placeholder="Eg. WW1-2021" required>
             <b><input type="submit" id="mybutton" value="Apply"></b>
     </form>
     <div></div>

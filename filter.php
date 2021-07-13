@@ -58,6 +58,7 @@
     error_reporting(E_ALL);
 
     $serialno = $_GET['serial'];
+    $work = $_GET['week'];
 
     $DATABASE_HOST = 'localhost';
     $DATABASE_USER = 'admin';
@@ -68,7 +69,10 @@
 
     $conn = new mysqli($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
 
-    $sql = "SELECT SOCKETNAME, WORKWEEK, PRODUCTIONDATE, SITETOTAL, SITETOTAL_ACCUMULATEDCOUNT, REPLACEFREQUENCY FROM ibpmcosting WHERE SOCKETNAME='" . $serialno . "' AND REPLACEFREQUENCY='0' ORDER BY SITETOTAL_ACCUMULATEDCOUNT DESC LIMIT 1 ";
+    $sql = "SELECT * (SELECT SOCKETNAME, WORKWEEK, PRODUCTIONDATE, SITETOTAL, SITETOTAL_ACCUMULATEDCOUNT, REPLACEFREQUENCY FROM ibpmcosting 
+    WHERE SOCKETNAME='" . $serialno . "' AND REPLACEFREQUENCY='0' ORDER BY SITETOTAL_ACCUMULATEDCOUNT DESC LIMIT 1) as FIRST, 
+    (SELECT COUNT(REPLACEFREQUENCY) as lifespan FROM ibpmcosting WHERE SOCKETNAME='" . $serialno . "' AND WORKWEEK='" . $work . "') as SECOND";
+
     $result = $conn->query($sql);
 
     if (mysqli_num_rows($result) > 0) {
@@ -94,6 +98,11 @@
                     </th>
                     <th>
                         <center>
+                            <font face="Arial">CF Lifespan</font>
+                        </center>
+                    </th>
+                    <th>
+                        <center>
                             <font face="Arial">Total Insertion</font>
                         </center>
                     </th>
@@ -107,7 +116,7 @@
                 $prod = $row["PRODUCTIONDATE"];
                 $daily = $row["SITETOTAL"];
                 $total = $row["SITETOTAL_ACCUMULATEDCOUNT"];
-                $replace = $row["REPLACEFREQUENCY"];        ?>
+                $replace = $row["lifespan"];        ?>
                 <tbody>
                     <tr>
                         <td>
@@ -118,6 +127,9 @@
                         </td>
                         <td>
                             <center><?php echo $ww; ?></center>
+                        </td>
+                        <td>
+                            <center><?php echo $replace; ?></center>
                         </td>
                         <td>
                             <center><?php echo $total; ?></center>
