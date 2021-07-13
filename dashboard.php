@@ -1,175 +1,267 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title>Cost Computation</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-		<link href="style1.css" rel="stylesheet" type="text/css">
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-		<link rel="shortcut icon" href="./images/logo.jpg"/>
-		<link rel="stylesheet" href="css/bootstrap.min.css">
-		<link rel="stylesheet" href="css/bootstrap-responsive.min.css">
-		<link rel="stylesheet" href="css/bootstrap-custom.css">
-		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-	</head>
+
+<head>
+	<meta charset="utf-8">
+	<title>TempHumid2021</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+	<link href="style1.css" rel="stylesheet" type="text/css">
+	<link rel="shortcut icon" href="./images/Square-logo.jpg" />
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.4/raphael-min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/justgage/1.5.0/justgage.min.js"></script>
+	<script src="./JsQueries/jquery-latest.js"></script>
+	<script src="./JsQueries/highcharts.js"></script>
+	<script src="./JsQueries/exporting.js"></script>
+	<script src="./JsQueries/export-data.js"></script>
+	<script src="./JsQueries/accessibility.js"></script>
+	<script src="./JsQueries/sand-signika.js"></script>
+	<script>
+		$(document).ready(function() {
+			$("#gaugePanel").load("statpanel2.php");
+			$("#graphPanel").load("graph.php");
+
+			setInterval(function() {
+				$("#gaugePanel").load("statpanel2.php");
+				$("#graphPanel").load("graph.php");
+			}, 30000);
+		});
+	</script>
+</head>
 <style>
-#dashboard {
-	font-family: Arial
-	border-collapse: collapse;
-	width: 100%;
-}
-#heading {
-	font-family: Arial
-	border-collapse: collapse;
-	width: 100%;
-}
-#header {
-	font-family: Arial
-	border-collapse: collapse;
-	width: 100%;
-}
+	#dashboard {
+		font-family: Arial;
+		border-collapse: collapse;
+		width: 100%;
+	}
+
+	#dashboard td,
+	#dashboard th {
+		border: 1px solid #081528;
+		padding: 8px;
+	}
+
+	#dashboard tr:nth-child(even) {
+		background-color: #f2f2f2;
+	}
+
+	#dashboard tr:hover(even) {
+		background-color: #081528;
+	}
+
+	#dashboard th {
+		padding-top: 12px;
+		padding-bottom: 12px;
+		text-align: left;
+		background-color: #081528;
+		color: white;
+	}
+
+	#dashboard1 {
+		font-family: Arial;
+		border-collapse: collapse;
+		width: 100%;
+	}
+
+	#dashboard1 td,
+	#dashboard1 th {
+		border: 1px solid #081528;
+		padding: 7px;
+	}
+
+	#dashboard1 tr:nth-child(even) {
+		background-color: #f2f2f2;
+	}
+
+	#dashboard1 tr:hover(even) {
+		background-color: #081528;
+	}
+
+	#dashboard1 th {
+		padding-top: 7px;
+		padding-bottom: 7px;
+		text-align: left;
+		background-color: #081528;
+		color: white;
+	}
+
+	#heading {
+		font-family: Arial;
+		border-collapse: collapse;
+		width: 100%;
+	}
+
+	#heading td,
+	#heading th {
+		border: 1px solid #797979;
+		padding: 8px;
+	}
+
+	#heading tr:nth-child(even) {
+		background-color: #f2f2f2;
+	}
+
+	#heading tr:hover(even) {
+		background-color: #797979;
+	}
+
+	#heading th {
+		padding-top: 12px;
+		padding-bottom: 12px;
+		text-align: left;
+		background-color: #797979;
+		color: white;
+	}
+
+	#header {
+		font-family: Arial;
+		border-collapse: collapse;
+		width: 100%;
+	}
+
+	#header td,
+	#header th {
+		border: 1px solid #081528;
+		padding: 8px;
+	}
+
+	#header tr:nth-child(even) {
+		background-color: #f2f2f2;
+	}
+
+	#header tr:hover(even) {
+		background-color: #081528;
+	}
+
+	#header th {
+		padding-top: 12px;
+		padding-bottom: 12px;
+		text-align: left;
+		background-color: #081528;
+		color: white;
+	}
+
+	#chart-container {
+		width: 100%;
+		height: 20%;
+	}
+
+	.highcharts-figure,
+	.highcharts-data-table table {
+		min-width: 320px;
+		max-width: 800px;
+		margin: 1em auto;
+	}
+
+	#container {
+		height: 400px;
+	}
+
+	.highcharts-figure,
+	.highcharts-data-table table {
+		min-width: 360px;
+		max-width: 800px;
+		margin: 1em auto;
+	}
+
+	.highcharts-data-table table {
+		font-family: Verdana, sans-serif;
+		border-collapse: collapse;
+		border: 1px solid #EBEBEB;
+		margin: 10px auto;
+		text-align: center;
+		width: 100%;
+		max-width: 500px;
+	}
+
+	.highcharts-data-table caption {
+		padding: 1em 0;
+		font-size: 1.2em;
+		color: #555;
+	}
+
+	.highcharts-data-table th {
+		font-weight: 600;
+		padding: 0.5em;
+	}
+
+	.highcharts-data-table td,
+	.highcharts-data-table th,
+	.highcharts-data-table caption {
+		padding: 0.5em;
+	}
+
+	.highcharts-data-table thead tr,
+	.highcharts-data-table tr:nth-child(even) {
+		background: #f8f8f8;
+	}
+
+	.highcharts-data-table tr:hover {
+		background: #f1f7ff;
+	}
+
+	table,
+	th,
+	td {
+		border: auto;
+		margin: auto;
+	}
+
+	.myDiv {
+		border: 5px outset black;
+	}
 </style>
-	<body class="loggedin" bgcolor="EEFDEF">
+
+<body class="loggedin" bgcolor="EEFDEF">
 	<nav class="navtop">
 		<div>
-			<img src="./images/logo.jpg">
-			<h1>  IBPM Cost Computation</h1>
+			<img src="./images/Square-logo.jpg">
+			<h1>Temperature and Humidity Data Logger</h1>
+			<a href="export.php"><i class="fas fa-file-csv"></i>Export into CSV</a>
+			<a href="about.php" style="margin-right:0px;"><i class="fas fa-info-circle"></i>About</a>
 		</div>
 	</nav>
-	<div>
-		<?php
-		ini_set('display_errors', 1); // set to 0 for production version
-		error_reporting(E_ALL);
+	<table id="dashboard" class="table" border="0" cellspacing="2" cellpadding="2" align="center">
+		<tr>
+			<th>
+				<center>
+					<font face="Arial">MAC Address: 582d343ad474</font>
+				</center>
+			</th>
+			<th>
+				<center>
+					<font face="Arial">MAC Address: 582d343ade5d</font>
+				</center>
+			</th>
+		</tr>
+	</table>
+	<div style="float:left;">
+		<div id="gaugePanel"></div>
+	</div>
+	<table id="dashboard" class="table" border="0" cellspacing="2" cellpadding="2" align="center">
+		<tr>
+			<th>
+				<center>
+					<font face="Arial">Live Graph</font>
+				</center>
+			</th>
+		</tr>
+	</table>
+	<div style="float:left;">
+		<div id="container" class="highcharts-figure" style="float:left;height:360px;width:675px;border: 5px outset black;margin-top:0px;margin-bottom:0px;margin-left:2px;"></div>
+		<div id="containers" class="highcharts-figure" style="float:left;height:360px;width:675px;border: 5px outset black;margin-top:0px;margin-bottom:0px;margin-right:2px;"></div>
+		<div id="graphPanel"></div>
+	</div>
+	<table id="dashboard1" class="table" border="0" cellspacing="2" cellpadding="2" align="center">
+		<tr>
+			<th>
+				<center>
+					<font face="Arial">© 2021 <a href="https://ionics-ems.com/">Ionics-EMS Inc.</a></font>
+				</center>
+			</th>
+		</tr>
+	</table>
+</body>
 
-		$DATABASE_HOST = 'localhost';
-		$DATABASE_USER = 'ibpm';
-		$DATABASE_PASS = 'ibpmcost2021';
-		$DATABASE_NAME = 'ibpm';
-
-		$sensorObj = new stdClass();
-
-		$con = new mysqli($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
-
-		if ($con->connect_error) {
-			// If there is an error with the connection, stop the script and display the error.
-			die('<script>alert("Failed to connect to the database. Please try again.")</script>');
-		}
-		?>
-		<h5><b><center>Import CSV/XLSX File</center></b></h5>
-		<b><center><form method="post" enctype="multipart/form-data">
-			<input type="file" name="fileToUpload" id="fileToUpload">
-			<input type="submit" value="Upload Excel Data" name="submit">
-			<input type="submit" value="Send" name="send">
-    	</form></center></b>
-				<table id="dashboard" class="table" border="0" cellspacing="2" cellpadding="2" align="center" style="width:100%;">
-					<thead class="bg-success text-white" >
-						<tr>
-							<th scope="col"><font color="black"><center>Serial Number</center></font></th>
-							<th scope="col"><font color="black"><center>WW</center></font></th>
-							<th scope="col"><font color="black"><center>Date</center></font></th>
-							<th scope="col"><font color="black"><center>Daily Insertion</center></font></th>
-							<th scope="col"><font color="black"><center>Total Insertion</center></font></th>
-							<th scope="col"><font color="black"><center>Replacement</center></font></th>
-						</tr>
-					</thead>
-					<tbody>
-					<?php   
-						$select1 = 'SELECT * FROM ibpmcost GROUP BY serialnumber';
-						$result1 = mysqli_query($con, $select1);
-						while($row1 = mysqli_fetch_array($result1)){
-							$select2 = 'select sum(dailyinsertion) as daily, replacement, ww, date from ibpmcost where serialnumber = "'.$row1['serialnumber'].'" group by ww ';
-							$result2 = mysqli_query($con, $select2);
-							while($row2 = mysqli_fetch_array($result2)){
-								if($row2['replacement']==0) {
-									echo '<tr>';
-									echo '<td>'.$row1['serialnumber'].'</td>';
-									echo '<td>'.$row2['ww'].'</td>';
-									echo '<td>'.$row2['date'].'</td>';
-									echo '<td>'.$row2['dailyinsertion'].'</td>';
-									echo '<td>'.$row2['replacement'].'</td>';
-									echo '<td></td>';
-									echo '<td></td>';
-									echo '</tr>';
-								}
-							}
-						}
-					?> 
-					</tbody>
-				</table>
-			</div>
-		    <?php
-			// Check if image file is a actual image or fake image
-			if(isset($_POST["submit"])) {
-				$target_dir = "file/";
-				$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-				$uploadOk = 1;
-				$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-
-				if (file_exists($target_file)) {
-					echo "Sorry, file already exists.";
-					$uploadOk = 0;
-				}
-				// Check file size
-				if ($_FILES["fileToUpload"]["size"] > 100000000) {
-					echo "Sorry, your file is too large.";
-					$uploadOk = 0;
-				}
-				if ($uploadOk == 0) {
-					echo "Sorry, your file was not uploaded.";
-				
-				} else {
-					if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-					echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
-					} else {
-					echo "Sorry, there was an error uploading your file.";
-					}
-				}
-			}
-			?>
-    		<?php
-			$temp = 0;
-			if(isset($_POST['send'])){
-				$filepath = 'file/27.xlsx';
-				$reader = ReaderEntityFactory::createXLSXReader();
-				$reader->setShouldFormatDates(true);
-				// $reader->setShouldPreserveEmptyRows(true);
-				$reader->open($filepath);
-
-				$setter=0;
-				foreach ($reader->getSheetIterator() as $sheet) {
-					if ($sheet->getName() === 'Sheet1') {
-						foreach ($sheet->getRowIterator() as $key => $row) {
-							$cells = $row->getCells();
-
-							if($key == 1){
-								continue;
-							}
-							else{
-								// do something with the row
-								$pr1 = $cells[1];
-								$pr0 = $cells[0];
-								$pr2 = $cells[2];
-								$pr6 = $cells[6];
-								$pr7 = $cells[7];
-								$pr12 = $cells[12];
-
-								$insert_data='INSERT into ibpmcost (serialnumber,ww,date,dailyinsertion,totalinsertion,replacement) values ("'.$pr0.'","'.$pr1.'","'.$pr2.'","'.$pr6.'","'.$pr7.'","'.$pr12.'")';
-								$result= mysqli_query($con,$insert_data);
-							}	
-						}
-						break; // no need to read more sheets
-					}
-				}
-				if($setter==1){
-					// echo 'data was alresdy exist!';
-				}
-				$reader->close(); 
-			}
-			echo $temp;
-			?>
-	</body>
 </html>
