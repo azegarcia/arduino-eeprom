@@ -7,9 +7,9 @@ ini_set('display_errors', 1); // set to 0 for production version
 error_reporting(E_ALL);
 
 $DATABASE_HOST = 'localhost';
-$DATABASE_USER = 'temphumiduser';
-$DATABASE_PASS = 'temphumid2021';
-$DATABASE_NAME = 'temphumid';
+$DATABASE_USER = 'admin';
+$DATABASE_PASS = 'admin';
+$DATABASE_NAME = 'ibpm';
 
 $sensorObj = new stdClass();
 
