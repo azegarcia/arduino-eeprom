@@ -20,7 +20,7 @@
     #dashboard1 td,
     #dashboard1 th {
         border: 1px solid #8aff8a;
-        padding: 7px;
+        padding: 6px;
     }
 
     #dashboard1 tr:nth-child(even) {
@@ -32,15 +32,15 @@
     }
 
     #dashboard1 th {
-        padding-top: 7px;
-        padding-bottom: 7px;
+        padding-top: 6px;
+        padding-bottom: 6px;
         text-align: left;
         background-color: #8aff8a;
         color: black;
     }
 </style>
 
-<body class="loggedin" bgcolor="EEFDEF">
+<body class="loggedin" style="background-color:white;">
     <nav class="navtop">
         <div>
             <img src="">
@@ -54,7 +54,6 @@
             <input type="text" id="week" name="week" placeholder="Eg. WW1-2021" required>
             <b><input type="submit" id="mybutton" value="Apply"></b>
     </form>
-    <div></div>
     <div id="form1"><?php include 'data.php'; ?></div>
 </body>
 
