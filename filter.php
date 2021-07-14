@@ -378,7 +378,7 @@
         }
         $month1 = mysqli_query($con, "SELECT SOCKETNAME, WORKWEEK, SUM(SITETOTAL) AS Monthly FROM ibpmcosting WHERE SOCKETNAME='" . $serialno . "' AND WORKWEEK BETWEEN 'WW1-2021' AND 'WW4-2021' GROUP BY WORKWEEK limit 4") or die(mysqli_error($conn));
         $month2 = mysqli_query($con, "SELECT SOCKETNAME, WORKWEEK, SUM(SITETOTAL) AS Monthly FROM ibpmcosting WHERE SOCKETNAME='" . $serialno . "' AND WORKWEEK BETWEEN 'WW5-2021' AND 'WW8-2021' GROUP BY WORKWEEK limit 4") or die(mysqli_error($conn));
-        $month3 = mysqli_query($con, "SELECT SOCKETNAME, WORKWEEK, SUM(SITETOTAL) AS Monthly FROM ibpmcosting WHERE SOCKETNAME='" . $serialno . "' AND WORKWEEK BETWEEN 'WW9-2021' AND 'WW12-2021' GROUP BY WORKWEEK limit 4") or die(mysqli_error($conn));
+        $month3 = mysqli_query($con, "SELECT SOCKETNAME, WORKWEEK, SUM(SITETOTAL) AS Monthly FROM ibpmcosting WHERE SOCKETNAME='" . $serialno . "' AND WORKWEEK='WW9-2021' UNION SELECT SOCKETNAME, WORKWEEK, SUM(SITETOTAL) AS Monthly FROM ibpmcosting WHERE SOCKETNAME='" . $serialno . "' AND WORKWEEK='WW10-2021' UNION SELECT SOCKETNAME, WORKWEEK, SUM(SITETOTAL) AS Monthly FROM ibpmcosting WHERE SOCKETNAME='" . $serialno . "' AND WORKWEEK='WW11-2021' UNION SELECT SOCKETNAME, WORKWEEK, SUM(SITETOTAL) AS Monthly FROM ibpmcosting WHERE SOCKETNAME='" . $serialno . "' AND WORKWEEK='WW12-2021' ") or die(mysqli_error($conn));
         $month4 = mysqli_query($con, "SELECT SOCKETNAME, WORKWEEK, SUM(SITETOTAL) AS Monthly FROM ibpmcosting WHERE SOCKETNAME='" . $serialno . "' AND WORKWEEK BETWEEN 'WW13-2021' AND 'WW16-2021' GROUP BY WORKWEEK limit 4") or die(mysqli_error($conn));
         $month5 = mysqli_query($con, "SELECT SOCKETNAME, WORKWEEK, SUM(SITETOTAL) AS Monthly FROM ibpmcosting WHERE SOCKETNAME='" . $serialno . "' AND WORKWEEK BETWEEN 'WW17-2021' AND 'WW20-2021' GROUP BY WORKWEEK limit 4") or die(mysqli_error($conn));
         $month6 = mysqli_query($con, "SELECT SOCKETNAME, WORKWEEK, SUM(SITETOTAL) AS Monthly FROM ibpmcosting WHERE SOCKETNAME='" . $serialno . "' AND WORKWEEK BETWEEN 'WW21-2021' AND 'WW24-2021' GROUP BY WORKWEEK limit 4") or die(mysqli_error($conn));
@@ -444,7 +444,14 @@
                             $data2 = array_sum($dat);
                         } ?>
                         <?php echo $data2; ?>,
-                        <?php echo $data1; ?>,
+                        <?php
+                        $dat = array();
+                        while ($rowsss = mysqli_fetch_assoc($month3)) {
+                            $monthlyy = $rowsss["Monthly"];
+                            $dat[] = $monthlyy;
+                            $data3 = array_sum($dat);
+                        } ?>
+                        <?php echo $data3; ?>,
                         <?php
                         $dat = array();
                         while ($rowsss = mysqli_fetch_assoc($month4)) {
